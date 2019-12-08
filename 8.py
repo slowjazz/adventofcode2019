@@ -15,14 +15,19 @@ def color(arr):
 
 arr = np.array(inp).reshape((layers,6,25))
 res = []
-# for l in range(layers):
-#     img = arr[l,:,:]
-    #print(img)
-    # count = np.count_nonzero(img)
-    # ones = np.count_nonzero(img == 1)
-    # twos = np.count_nonzero(img == 2)
-    # res.append((count, ones*twos))
+# Part 1
+for l in range(layers):
+    img = arr[l,:,:]
+    print(img)
+    count = np.count_nonzero(img)
+    ones = np.count_nonzero(img == 1)
+    twos = np.count_nonzero(img == 2)
+    res.append((count, ones*twos))
 
+print(max(res, key=lambda x: x[0]))
+
+
+## Part 2
 res = np.zeros((25,6))
 for i in range(25):
     for j in range(6):
@@ -32,9 +37,3 @@ for i in range(25):
 print(res.T)
 for i in res.T:
     print("".join(str(int(j)) for j in i))
-# from PIL import Image
-# img = Image.new( 'RGB', (6,25), "black")
-# pixels = img.load()
-# pixels = res
-# img.show()
-# print(max(res, key=lambda x: x[0]))
